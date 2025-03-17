@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+    <!-- Google Fonts -->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Montserrat:wght@700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="logo"><span>P</span>ersonal <span>V</span>ault</div>
+
+        <!-- Hamburger Menu Button -->
+        
+
+        <div class="hamburger-menu" onclick="toggleMenu()">&#9776;</div> 
+        <ul class="nav-links">
+            <li><a href="{{ url_for('index') }}"><b>Home</b></a></li>
+            <li><a href="#reviews"><b>Reviews</b></a></li>
+            <li><a href="#about-us"><b>About</b></a></li>
+            <li><a href="#contact"><b>Contact Us</b></a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="content" style="text-align: center;">
+            <h2> Welcome To </h2>
+            <h1><strong><b>"Your Secure Digital Vault"</b></strong></h1>
+            <p style= font-size:18px;>Store, protect, and access your data securely Here.</p>
+            <a href="{% if session.get('user') or session.get('guest') %} /#password-manager {% else %}/login{% endif %}">
+                <button>Manage Password</button>
+            </a>
+            <br />
+            <button class="goto-password-btn" onclick="location.href='#password-manager'">
+                <u>Go to Password Manager</u>
+            </button>
+        </div>
+    </main>   
+<!-- Password Manager Section -->
+{% if session.get('user') or session.get('guest') %}
+    <section id="password-manager">
+        <div class="main-text">
+            <h1 style="text-align: center;">Password Manager 🔒</h1>
+        </div>
+    </section>
+    <div class="manage-passwords">
+        <!-- Save Password Section -->
+        <h3>Save Password</h3>
+        <div class="save-password-container">
+            <input type="text" id="website" placeholder="Website">
+            <input type="text" id="username" placeholder="Username">
+            <input type="text" id="password" placeholder="Password">
+            <button onclick="savePassword()">Save</button>
+        </div>
+        <!-- Search Password -->
+        <div class="search-container">
+            <h3>Search Password</h3>
+            <input type="text" id="search_website" placeholder="Website">
+            <button onclick="searchPassword()">Search</button>
+            <p id="result"></p>  
+        </div>
+        <!-- Update Password -->
+        <div class="update-container">
+            <h3>Update Password</h3>
+            <input type="text" id="update_website" placeholder="Website">
+            <input type="text" id="new_password" placeholder="New Password">
+            <button onclick="updatePassword()">Update</button>
+        </div>
+        <!-- Delete Password -->
+        <div class="delete-container">
+            <h3>Delete Password</h3>
+            <input type="text" id="delete_website" placeholder="Website">
+            <button onclick="deletePassword()">Delete</button>
+        </div>
+        <!-- Logout Button -->
+<button onclick="logoutUser()" style="margin-top: 20px; padding: 10px 20px; font-size: 16px; background-color: red; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Logout
+</button>
+<script>
+    function logoutUser() {
+        window.location.href = "/logout";  // Redirects to logout route
+    }
+</script>
+    </div>
+{% endif %}
+    <section id="reviews">
+        <h2>What Our Clients Say</h2>
+        <div><pre>
+
+        </pre></div>
+        <div class="review-container">
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="{{ url_for('static', filename='r3.png') }}" alt="User Image">
+                </div>
+                <div class="review-body">
+                    <p>“This password manager has made managing my credentials so much easier. The interface is user-friendly and intuitive. I can store all my passwords securely and access them when needed. Highly recommend!.”</p>
+                    <h4>John Doe</h4>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="{{ url_for('static', filename='r2.png') }}" alt="User Image">
+                </div>
+                <div class="review-body">
+                    <p>“I’ve tried several password managers, but this one stands out. The design is sleek, the functionality is seamless, and it really helps me stay on top of my passwords. It’s incredibly efficient and secure!”</p>
+                    <h4>Emily R </h4>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="{{ url_for('static', filename='r1.png') }}" alt="User Image">
+                </div>
+                <div class="review-body">
+                    <p>“As someone who needs to keep track of multiple accounts, this password manager has been a lifesaver. It’s simple, secure, and helps me stay organized. I can access everything quickly and easily!.”</p>
+                    <h4>David L</h4>
+                </div>
+            </div>
+            <div class="review-form">
+                <h3>Leave a Review</h3>
+                <input type="text" id="review_name" placeholder="Your Name" required>
+                <input type="file" id="image" accept="image/*">
+                <textarea id="review" placeholder="Write your review here..." required></textarea>
+                <button onclick="submitReview()">Submit</button>
+            </div>
+        </div>
+    </section>
+   
+    <section id="about-us">
+        <div class="about-container">
+            <h2>About Us</h2>
+            <p>
+                Welcome to <strong>Personal Vault: A Password Manager</strong>, your ultimate solution for managing and securing passwords effortlessly. 
+                Our Password Manager is designed to provide a secure, user-friendly, and efficient way to store and retrieve passwords for various online accounts.
+            </p>
+            <div class="why-choose">
+                <h3>Why Choose Us?</h3>
+                <ul>
+                    <li>🔒 <strong>Enhanced Security</strong> – We use strong encryption techniques to keep your passwords safe.</li>
+                    <li>💡 <strong>User-Friendly Interface</strong> – Easy to navigate and store credentials without hassle.</li>
+                    <li>📂 <strong>Organized Storage</strong> – Keep all your passwords in one place, accessible only by you.</li>
+                    <li>🌍 <strong>Access Anytime, Anywhere</strong> – Securely retrieve your credentials whenever needed.</li>
+                    <li>🔍 <strong>Search Feature</strong> – Easily find passwords for specific websites using our search functionality.</li>
+                </ul>
+            </div>
+            <p>
+                At <strong>Personal Vault</strong>, our mission is to ensure that you never struggle with password management again. With our search feature, you can quickly locate any stored password without scrolling through long lists.
+            </p>
+        </div>
+    </section>
+    
+     <!-- Contact Section Start -->
+     <section class="contact" id="contact">
+        <div class="content-text">
+            <h2>Get In <span>Touch</span></h2>
+            <p>If you have any questions, feedback, or need support, feel free to reach out to us.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, harum. Sint recusandae in suscipit blanditiis, neque eos quam praesentium impedit?</p>
+            <div class="list">
+                <li><a href="#">+91 7993601901</a></li>
+                <li><a href="#">sanjaychegg9@gmail.com</a></li>
+             
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <form action="#">
+                <input type="name" placeholder="Name" required>
+                <input type="number" placeholder="Phone" required>
+                <input type="email" placeholder="Email" required>
+                <textarea name="" id="" cols="35" rows="10" placeholder="Message"></textarea>
+                <input type="submit" value="Send" class="submit" required>
+
+            </form>
+        </div>
+
+    </section>
+    <!-- Contact Section End -->
+
+    
+    <script>
+       function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active'); // Toggles the visibility of nav links
+        }
+              
+        async function savePassword() {
+            const website = document.getElementById("website").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            if (!website || !username || !password) {
+                alert("All fields are required!");
+                return;
+            }
+            const response = await fetch("/add_password", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ website, username, password }),
+            });
+            const data = await response.json();
+            alert(data.message);
+            document.getElementById("website").value = "";
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+        }
+       /* async function searchPassword() {
+            const websiteInput = document.getElementById("search_website");
+            const website = websiteInput.value;
+
+            if (!website) {
+                alert("Please enter a website name!");
+                return;
+            }
+
+            const response = await fetch("/search_password", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ website }),
+            });
+
+            const data = await response.json();
+            document.getElementById("result").innerHTML = data.username
+                ? `Username: <b>${data.username}</b><br>Password: <b>${data.password}</b>`
+                : "<span style='color:red;'>No password found!</span>";
+
+            websiteInput.value = "";
+        }*/
+        async function searchPassword() {
+            const websiteInput = document.getElementById("search_website");
+            const website = websiteInput.value;
+        
+            if (!website) {
+                alert("Please enter a website name!");
+                return;
+            }
+        
+            const response = await fetch("/search_password", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ website }),
+            });
+        
+            const data = await response.json();
+            if (data.username && data.password) {
+                document.getElementById("result").innerHTML =
+                    `Username: <b>${data.username}</b><br>Password: <b>${data.password}</b>`;
+            } else {
+                document.getElementById("result").innerHTML = "<span style='color:red;'>No password found!</span>";
+            }        
+            websiteInput.value = "";
+        }     
+        async function updatePassword() {
+            const websiteInput = document.getElementById("update_website");
+            const passwordInput = document.getElementById("new_password");
+            const website = websiteInput.value;
+            const password = passwordInput.value;
+            if (!website || !password) {
+                alert("Please enter both Website and New Password!");
+                return;
+            }
+            const response = await fetch("/update_password", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ website, password }),
+            });
+            const data = await response.json();
+            alert(data.message);
+            websiteInput.value = "";
+            passwordInput.value = "";
+        }
+        async function deletePassword() {
+            const websiteInput = document.getElementById("delete_website");
+            const website = websiteInput.value;
+            if (!website) {
+                alert("Please enter a website name!");
+                return;
+            }
+            const response = await fetch("/delete_password", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ website }),
+            });
+            const data = await response.json();
+            alert(data.message);
+            websiteInput.value = "";
+        }
+        function submitReview() {
+            let name = document.getElementById("review_name").value;
+            let review = document.getElementById("review").value;
+            let imageInput = document.getElementById("image");
+            let imageUrl = "";
+            if (imageInput.files.length > 0) {
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    imageUrl = e.target.result;
+                    addReviewToPage(name, review, imageUrl);
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            } else {
+                addReviewToPage(name, review, imageUrl);
+            }
+        }
+        /*function submitReview() {
+            let name = document.getElementById("review_name").value.trim();
+            let review = document.getElementById("review").value.trim();
+            let imageInput = document.getElementById("image");        
+            if (!name || !review) {
+                alert("Please enter both name and review.");
+                return;
+            }        
+            let imageUrl = "";
+            if (imageInput.files.length > 0) {
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    imageUrl = e.target.result;
+                    addReviewToPage(name, review, imageUrl);
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            } else {
+                addReviewToPage(name, review, imageUrl);
+            }
+        }
+        */
+        function addReviewToPage(name, review, imageUrl) {
+            let reviewsContainer = document.querySelector(".review-container");
+            let newReview = document.createElement("div");
+            newReview.className = "review-card";
+
+            newReview.innerHTML = `
+                <div class="review-header">
+                    ${imageUrl ? `<img src="${imageUrl}" alt="User Image">` : ""}
+                </div>
+                <div class="review-body">
+                    <p>"${review}"</p>
+                    <h4>${name}</h4>
+                </div>
+            `;
+            reviewsContainer.appendChild(newReview);
+        }
+        async function logout() {
+            await fetch("/logout", { method: "GET" });
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
+    <!-- Footer Start -->
+    <footer id="footer">
+        <div class="footer-content">
+           
+                <p><strong>🔒Personal Vault: A Password Manager</p></strong>
+                <p style=font-size:16px; >Manage and protect your passwords securely with Personal Vault. Safeguard your sensitive data and keep your online accounts secure.</p>
+                <p style=font-size:16px;>Built with privacy in mind, Personal Vault ensures your passwords are stored safely with top-notch encryption.</p>
+              </div>
+            <div class="socail-links">
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-pinterest-p"></i>
+            </div>
+        </div>
+        <hr>
+        <div class="footer-bottom-content">
+            <p>Designed By <a href="#">Sanjay Gundeboina</a></p>
+            <div class="copyright">
+                <p>&copy;Copyright<strong> @2025</strong>.All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+   
+
+
+
+

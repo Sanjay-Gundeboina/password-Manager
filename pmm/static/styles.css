@@ -1,0 +1,629 @@
+
+
+         Add your previous CSS styles here 
+        /* body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd;
+            /*background-image: url('{{ url_for("static", filename="bgg.jpg") }}');  
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            justify-content: center;
+            align-items: center;
+            height : 800vh; 
+            margin: 0;
+            padding: 0;
+            height: 150vh;
+            overflow-y: auto; 
+            font-family: Arial, sans-serif;
+           
+            display: flex;
+            flex-direction: column; */
+           
+          
+            
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color:  #ffffff;
+            background-size: cover;
+            overflow-x: hidden; /* Prevents horizontal scrolling */
+        }
+        
+         
+        nav {
+            display: flex;
+            justify-content: space-between;
+        
+            align-items: center;
+            width: 100%;
+            padding: 20px 1px;
+            background: white;
+            color: rgb(8, 7, 7);
+          
+            
+        }
+        
+        /* Logo Styling */
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+/* Highlighted "P" */
+.logo span {
+    font-size: 40px;
+    color: #1976D2;/* Adjust color as needed */
+    font-weight: 900;
+}
+
+/* Menu Icon 
+.fa-bars {
+    font-size: 30px;
+    cursor: pointer;
+}*/
+.fa-bars {
+    display: block;
+    font-size: 30px;
+    cursor: pointer;
+    color: black; /* Ensure it's visible */
+    padding: 10px;
+}
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+           
+        }
+        .nav-links li {
+            margin:0px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: black !important;
+            font-size: 18px;
+            font-family: 'Roboto', sans-serif;
+           
+        }
+        
+        
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            
+            /*text-align: center;
+            text:bold;
+            */
+            color:black;
+        }
+        .content {                       
+            width: 100%;
+            background-color: #e3f2fd;
+            height: 650px; /* Adjust height as needed */
+          
+           background-image: url('/static/p5.jpg');
+          
+
+            background-size: cover;
+            background-position:center;            
+            display: flex;
+            justify-content: center;  
+            align-items: center;                          
+            flex-direction: column; 
+            text-align: center;
+            
+            
+        }
+        h1 {
+            font-size:40px;
+            margin-bottom: 10px; /* Remove space below "Welcome To" */
+        }
+        h2{
+            font-size:28px;
+        }
+        
+        
+        
+        footer {
+            background: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        /* Save Password - Side by Side */
+        .manage-passwords {
+            display: block; /* Ensures it's visible */
+            padding: 20px;
+            background-color: lightgray;
+        }
+        .save-password-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .save-password-container input {
+            flex: 1;
+            min-width: 30%; /* Ensures responsiveness */
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .save-password-container button {
+            flex: 0.5;
+            background: green;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        /* Other Sections Styling */
+        .search-container,
+        .update-container,
+        .delete-container {
+            display: flex;
+            flex-direction: column; /* Stack elements */
+            align-items: stretch; /* Stretch elements to full width */
+            gap: 3px; /* Adds spacing */
+            width: 100%;
+        }
+        
+        .search-container input,
+        .update-container input,
+        .delete-container input,
+        .search-container button,
+        .update-container button,
+        .delete-container button {
+            width: 100%; /* Ensures same width */
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            text-align: center; /* Centers text inside button */
+        }
+        
+        .search-container button,
+        .update-container button,
+        .delete-container button {
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: darkgreen;
+        }
+        
+        
+        
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .search-container, .update-container, .delete-container {
+                flex-direction: column; /* Stack on small screens */
+            }
+        
+        }
+        
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            width: 100%;
+            padding: 10px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: darkgreen;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .save-password-container {
+                flex-direction: column;  /* Stack inputs on small screens */
+            }
+        }
+        
+            
+            #result {
+                margin-top: 20px;
+                font-weight: bold;
+            }
+        
+        
+        header {
+            width: 100%;
+            background: lightblue;
+            padding: 10px;
+            text-align: center;
+        }
+        nav {
+            margin: 2px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: darkblue;
+        }
+        .container {
+            max-width: 700px; /* Adjusted width for main container */
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        /* Add styles for quote, reviews, and contact sections */
+        .quote, .reviews, .contact {
+            margin-top: 30px;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .goto-password-btn {
+            background-color: transparent !important; /* Removes the green background */
+            border: none; /* Removes any border */
+            color: rgb(0, 0, 0); /* Text color */
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .goto-password-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Optional: Adds a slight hover effect */
+        }
+        /* Review Section */
+        #reviews {
+            text-align: center;
+            padding: 50px;
+            background-color: #f3f3f3;
+            margin-bottom: 30px;
+        }
+        
+        /* Review Container */
+        .review-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px; /* Space between review cards */
+        }
+        
+        /* Review Card */
+        .review-card {
+            background: rgb(237, 230, 230);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+            padding-top: 50px; /* Ensure space for the floating image */
+            position: relative;
+            overflow: visible; /* Allow avatar to be visible */
+        }
+        
+        /* Circular User Image */
+        .review-header {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .review-header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #d4d4f7;
+            padding: 5px;
+            border: 5px solid white;
+            z-index: 2; /* Ensures image is above everything */
+                                    
+        }        
+        /* Review Body */
+        .review-body {
+            background: #68b1cb;
+            color: white;
+            padding: 20px 20px 20px;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+            position: relative;
+            z-index: 1; /* Keep body behind the avatar */
+        }
+        
+        /* Review Text */
+        .review-body p {
+            font-style: italic;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }        
+        /* Reviewer Name */
+        .review-body h4 {
+            margin-top: 5px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.727);
+        }      
+        h2 {
+            position: relative;
+            
+            margin-bottom:1px;
+            /*z-index: 4;  Higher than images */
+            text-align: center;
+        }
+        .review-form {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .review-form input, .review-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #about-us {
+            background-color:#f3f3f3;/* Light grey background */
+            padding: 50px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .about-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-container h2 {
+            color:rgb(0, 0, 0);
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .why-choose {
+            background:rgb(67, 96, 129);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .why-choose h3 {
+            margin-bottom: 10px;
+        }
+        
+        .why-choose ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .why-choose li {
+            text-align: left;
+            padding: 5px 0;
+            font-size: 16px;
+        }
+        
+        
+
+       
+        /* Add to the existing CSS file */
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: black; /* Adjust to match your design */
+    padding: 10px;
+}
+    
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+/* Show hamburger icon only on small screens */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links on small screens */
+        flex-direction: column; /* Stack links vertically */
+        width: 100%;
+        background: rgba(20, 79, 79, 0.7);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 10;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show links when the hamburger menu is clicked */
+    }
+
+    .hamburger-menu {
+        display: block; /* Show hamburger on small screens */
+    }
+
+    .nav-links li {
+        margin: 15px 0; /* Add spacing for stacked links */
+        text-align: center;
+    }
+}
+/* Footer Start */
+/* Footer Start */
+#footer{
+    width: 100%;
+    background:#f3f3f3;
+    padding: 0; /* Remove padding */
+    margin: 0;  /* Remove margin */
+}
+.footer-content{
+    text-align: center;
+    padding: 0px; 
+}
+
+.footer-content p{
+    font-size:24px;
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+.social-links i {
+    font-size: 24px;
+    color: white; /* Icon color */
+    margin-left: 10px;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.social-links i:hover {
+    color: #388b6f; /* Color change on hover */
+}
+.footer-bottom-content{
+    text-align: center;
+    
+}
+.footer-bottom-content p{
+    font-size: 17px;
+    font-weight: 550;
+}
+.footer-bottom-content p a{
+    color: #53a5cb;
+    font-weight: 200;
+}
+/* Footer End */
+html{
+    scroll-behavior: smooth;
+}
+
+/* Contact Section Start */
+.contact{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2.5rem;
+    padding: 100px 8% 120px;
+    background: #f3f3f3;
+    margin-bottom: 30px;
+}
+.content-text{
+    margin-bottom: 10px;
+}
+.content-text h2{
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0px 1px 1px black;
+}
+.content-text h2 span{
+    color: #4bbce1;
+}
+.content-text p{
+    font-weight: bold;
+}
+.list{
+    margin-top: 16px;
+}
+.list li{
+    margin-bottom: 12px;
+}
+.list li a{
+    display: block;
+    color: #3889a4;
+    font-weight: bold;
+    font-size: 15px;
+    transition: 0.3s ease;
+}
+.contact-form form{
+    position: relative;
+}
+.contact-form form input,
+form textarea{
+    width: 100%;
+    padding: 10px;
+    background: white;
+    color: black;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.contact-form textarea{
+    resize: none;
+    height: 160px;
+}
+.contact-form .submit{
+    display: inline-block;
+    font-size: 15px;
+    background: #5589e4;
+    color: white;
+    width: 160px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.contact-form .submit:hover{
+    width: 175px;
+}
+@media (max-width:920px){
+    .contact{
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+}
+/* Contact Section End */
+
+
+
