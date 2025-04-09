@@ -5,7 +5,7 @@
             font-family: Arial, sans-serif;
             background-color: #e3f2fd;
             /*background-image: url('{{ url_for("static", filename="bgg.jpg") }}');
-              background-image: url('/password-Manager/pmm/static/bgg.jpg');
+              background-image: url('/password-Manager/pmm/static/p5.jpg');
 
             background-size: cover;
             background-position: center;
@@ -117,7 +117,8 @@
             background-color: #e3f2fd;
             height: 650px; /* Adjust height as needed */
                    
-           background-image: url('/password-Manager/pmm/static/p5.jpg');
+          background-image: url('/password-Manager/pmm/static/images/p5.jpg');
+
 
           
 
